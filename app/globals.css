@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primitive Palette — Anchored to Official Logo (#0E4025) */
+  --forest-950: #072415;
+  --forest-900: #0e4025;
+  --forest-800: #155232;
+  --forest-700: #1f6841;
+  --sage-100: #e8f0ea;
+  --sage-200: #cfe0d4;
+  --parchment: #faf7f0;
+  --cream: #f2ece0;
+  --card: #ffffff;
+  --border-warm: #e3dac6;
+  --ink-primary: #15231a;
+  --ink-secondary: #435449;
+  --ink-muted: #5f7065;
+  --brass-text: #845d18;
+  --brass: #a67c2e;
+  --brass-light: #d4af63;
+  --advisory-bg: #fdf7ea;
+  --advisory-border: #dec89a;
+
+  /* Semantic Aliases */
+  --background: var(--parchment);
+  --foreground: var(--ink-primary);
+  --surface: var(--card);
+  --surface-subtle: var(--cream);
+  --primary: var(--forest-900);
+  --primary-hover: var(--forest-800);
+  --accent: var(--brass);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-forest-950: var(--forest-950);
+  --color-forest-900: var(--forest-900);
+  --color-forest-800: var(--forest-800);
+  --color-forest-700: var(--forest-700);
+  --color-sage-100: var(--sage-100);
+  --color-sage-200: var(--sage-200);
+  --color-parchment: var(--parchment);
+  --color-cream: var(--cream);
+  --color-border-warm: var(--border-warm);
+  --color-ink-primary: var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-brass-text: var(--brass-text);
+  --color-brass: var(--brass);
+  --color-brass-light: var(--brass-light);
+  --color-advisory-bg: var(--advisory-bg);
+  --color-advisory-border: var(--advisory-border);
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--parchment);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+/* Accessible high-contrast focus outlines */
+:focus-visible {
+  outline: 2px solid var(--forest-900);
+  outline-offset: 3px;
+}
+
+/* Editorial paper texture overlay */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Botanical radial glow for hero & sanctuary bands */
+.botanical-glow {
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(166, 124, 46, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 10% 80%, rgba(14, 64, 37, 0.06) 0%, transparent 50%);
+}
+
+/* Custom warm scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #b9b19f;
+  border-radius: 9999px;
+  border: 2px solid var(--cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--forest-800);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

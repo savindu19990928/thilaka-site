@@ -1,0 +1,20 @@
+# AI Agent skills & local IDE files
+.agent
+.agents
+.vscode
+
+# Version control
+.git
+.gitignore
+
+# Python virtual environment & caches
+enverp/
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+*.log
+
+# Local environment & asset seed folders
+.env
+UTD pics
