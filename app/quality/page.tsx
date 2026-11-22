@@ -2,28 +2,59 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { FaqAccordion } from "@/components/FaqAccordion";
+import { JsonLd } from "@/components/JsonLd";
 import {
   CatalogueNoticeBanner,
   HealthDisclaimerBanner,
 } from "@/components/Notices";
 import { OrnamentDivider } from "@/components/OrnamentDivider";
-import { BUSINESS_INFO, FAQS, QUALITY_PILLARS } from "@/lib/site-data";
+import { buildOpenGraph, buildQualityPageGraph } from "@/lib/schema";
+import {
+  BUSINESS_INFO,
+  FAQS,
+  QUALITY_PILLARS,
+  SITE_LAST_UPDATED_LABEL,
+} from "@/lib/site-data";
+
+const QUALITY_DESC =
+  "Review Thilaka Ayurveda's transparent ingredient communication, verified label practices, and 10 answers to frequently asked shop and product questions.";
 
 export const metadata: Metadata = {
-  title: "Quality, Sourcing & FAQs",
-  description:
-    "Learn about Thilaka Ayurveda's approach to ingredients, traditional preparation forms, responsible product communication, and answers to frequently asked questions.",
+  title: "Quality, Herbal Sourcing & FAQs",
+  description: QUALITY_DESC,
+  alternates: {
+    canonical: "/quality/",
+  },
+  openGraph: buildOpenGraph(
+    "Quality, Herbal Sourcing & FAQs | Thilaka Ayurveda",
+    QUALITY_DESC,
+    "/quality/"
+  ),
+  twitter: {
+    card: "summary_large_image",
+    title: "Quality, Herbal Sourcing & FAQs | Thilaka Ayurveda",
+    description:
+      "Transparent Ayurvedic ingredient practices and answers to 10 common questions about visiting Thilaka Ayurveda.",
+    images: ["/images/og-cover.png"],
+  },
 };
 
 export default function QualityAndFaqsPage() {
   return (
     <div className="bg-[#FAF7F0] py-12 sm:py-16">
+      <JsonLd data={buildQualityPageGraph()} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-14">
         {/* Intro */}
         <header className="max-w-3xl space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#845D18]">
-            Transparency &amp; Guidance
-          </p>
+          <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#845D18]">
+            <span>Transparency &amp; Guidance</span>
+            <span className="text-[#DEC89A]" aria-hidden="true">
+              ·
+            </span>
+            <span className="text-[#5F7065]">
+              Information last reviewed: {SITE_LAST_UPDATED_LABEL}
+            </span>
+          </div>
           <h1 className="font-serif text-4xl font-semibold leading-tight text-[#15231A] sm:text-5xl">
             Quality, Ingredients &amp; Frequently Asked Questions
           </h1>

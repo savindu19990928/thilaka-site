@@ -10,15 +10,19 @@ import {
   Phone,
 } from "lucide-react";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { JsonLd } from "@/components/JsonLd";
 import {
   CatalogueNoticeBanner,
   HealthDisclaimerBanner,
 } from "@/components/Notices";
+import { buildCategoryPageGraph, buildOpenGraph } from "@/lib/schema";
 import {
   BUSINESS_INFO,
   PRODUCT_CATEGORIES,
   PRODUCT_FORMS,
   getCategoryBySlug,
+  getCategoryFaqs,
 } from "@/lib/site-data";
 
 export function generateStaticParams() {
@@ -40,9 +44,27 @@ export async function generateMetadata({
     };
   }
 
+  const title = `${category.name} — Ayurvedic Products`;
+  const description = `${category.shortDescription} Browse traditional forms at Thilaka Ayurveda, Ruwanwella. Call ${BUSINESS_INFO.phoneDisplay} or visit our shop.`;
+  const path = `/products/${category.slug}/`;
+
   return {
-    title: `${category.name} — Ayurvedic Product Category`,
-    description: `${category.shortDescription} Explore ${category.name} at Thilaka Ayurveda, No. 38, Main Street, Ruwanwella, Sri Lanka. Catalogue only — call ${BUSINESS_INFO.phoneDisplay} or visit the shop to confirm product details and availability.`,
+    title,
+    description,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: buildOpenGraph(
+      `${title} | Thilaka Ayurveda`,
+      description,
+      path
+    ),
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Thilaka Ayurveda`,
+      description,
+      images: ["/images/og-cover.png"],
+    },
   };
 }
 
@@ -66,11 +88,17 @@ export default async function CategoryDetailPage({
     category.recommendedForms.includes(form.name)
   );
 
+  const categoryFaqs = getCategoryFaqs(category);
+
   return (
     <div className="bg-[#FAF7F0] py-10 sm:py-14">
+      <JsonLd data={buildCategoryPageGraph(category)} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-[#5F7065]">
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-xs text-[#5F7065]"
+        >
           <Link href="/" className="hover:text-[#0E4025] transition-colors">
             Home
           </Link>
@@ -118,6 +146,47 @@ export default async function CategoryDetailPage({
               <p className="text-base leading-relaxed text-[#435449]">
                 {category.overview}
               </p>
+
+              {/* Semantic Category Quick Facts */}
+              <div className="rounded-2xl border border-[#E3DAC6] bg-[#FAF7F0] p-5">
+                <h2 className="font-serif text-xl font-semibold text-[#15231A] mb-3">
+                  Category Quick Facts
+                </h2>
+                <dl className="grid gap-3 text-xs sm:grid-cols-2">
+                  <div>
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-[#5F7065]">
+                      Wellness Focus Area
+                    </dt>
+                    <dd className="mt-0.5 font-medium text-[#15231A]">
+                      {category.group}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-[#5F7065]">
+                      Traditional Forms
+                    </dt>
+                    <dd className="mt-0.5 font-medium text-[#15231A]">
+                      {category.recommendedForms.join(", ")}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-[#5F7065]">
+                      Availability Status
+                    </dt>
+                    <dd className="mt-0.5 font-medium text-[#845D18]">
+                      {category.availabilityLabel}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold uppercase tracking-[0.12em] text-[#5F7065]">
+                      Purchase Method
+                    </dt>
+                    <dd className="mt-0.5 font-medium text-[#15231A]">
+                      In-person purchase at {BUSINESS_INFO.shortAddress}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
 
               {/* Verified Guidance Points */}
               <div className="space-y-3 pt-2">
@@ -221,6 +290,17 @@ export default async function CategoryDetailPage({
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Category-Specific FAQs (Matches FAQPage JSON-LD 1:1) */}
+        <section aria-labelledby="cat-faq-heading" className="space-y-4">
+          <h2
+            id="cat-faq-heading"
+            className="font-serif text-2xl font-semibold text-[#15231A] sm:text-3xl"
+          >
+            Quick Answers About {category.name}
+          </h2>
+          <FaqAccordion items={categoryFaqs} />
         </section>
 
         {/* Required Notices */}

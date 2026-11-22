@@ -38,6 +38,8 @@ export interface ProductForm {
   slug: string;
   name: string;
   subtitle: string;
+  formatType: string;
+  typicalUseContext: string;
   summary: string;
   detail: string;
   shopNote: string;
@@ -69,6 +71,10 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
+
+export const SITE_URL = "https://www.thilakaayurveda.lk";
+export const SITE_LAST_UPDATED_ISO = "2026-11-23";
+export const SITE_LAST_UPDATED_LABEL = "November 2026";
 
 export const BUSINESS_INFO = {
   name: "Thilaka Ayurveda",
@@ -115,6 +121,9 @@ export const PRODUCT_FORMS: ProductForm[] = [
     slug: "churna",
     name: "Churna",
     subtitle: "Fine Herbal Powders",
+    formatType: "Dry milled botanical powder",
+    typicalUseContext:
+      "Mixed or taken as directed on verified manufacturer labels",
     summary: "Traditional powdered herbal preparations.",
     detail:
       "Finely milled botanical powders prepared from dried roots, barks, leaves, seeds, or spices according to traditional Ayurvedic formulations.",
@@ -126,6 +135,9 @@ export const PRODUCT_FORMS: ProductForm[] = [
     slug: "vati-gutika",
     name: "Vati / Gutika",
     subtitle: "Herbal Tablets & Pills",
+    formatType: "Compressed herbal tablets or pills",
+    typicalUseContext:
+      "Standardized individual servings per verified product label",
     summary: "Traditional herbal tablets or pills.",
     detail:
       "Measured traditional tablet and pill preparations formulated for convenient handling and clear, standardized serving guidance from product labels.",
@@ -137,6 +149,9 @@ export const PRODUCT_FORMS: ProductForm[] = [
     slug: "medicated-oils",
     name: "Medicated Oils",
     subtitle: "Herbal Infused Oils (Taila)",
+    formatType: "Botanical oil infusion in glass or sealed bottle",
+    typicalUseContext:
+      "External or specified traditional applications (confirm label)",
     summary:
       "Herbal oils intended for specified applications. Product-specific directions must be confirmed.",
     detail:
@@ -149,6 +164,9 @@ export const PRODUCT_FORMS: ProductForm[] = [
     slug: "arishta-asava",
     name: "Arishta / Asava",
     subtitle: "Fermented Herbal Liquids",
+    formatType: "Classical fermented liquid decoction or infusion",
+    typicalUseContext:
+      "Measured liquid portions following verified label guidance",
     summary: "Traditional fermented herbal liquid preparations.",
     detail:
       "Classical liquid Ayurvedic preparations created through controlled natural fermentation of herbal decoctions or infusions.",
@@ -160,6 +178,9 @@ export const PRODUCT_FORMS: ProductForm[] = [
     slug: "raw-herbs",
     name: "Raw Herbs",
     subtitle: "Fresh & Dried Botanicals",
+    formatType: "Whole, cut, fresh, or dried plant parts & spices",
+    typicalUseContext:
+      "Home infusions or practitioner-guided traditional preparations",
     summary: "Fresh or dried herbal ingredients, subject to availability.",
     detail:
       "Whole, cut, or dried traditional medicinal plant parts and spices selected for home or practitioner-directed preparations.",
@@ -526,7 +547,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     id: "opening-hours",
-    question: "What are your opening hours?",
+    question: "What are Thilaka Ayurveda's opening hours?",
     answer:
       "Opening schedules may vary on weekends and Sri Lankan public or Poya holidays. Please call +94 36 226 6693 before visiting to confirm our current opening days and hours.",
   },
@@ -535,6 +556,30 @@ export const FAQS: FaqItem[] = [
     question: "What types of Ayurvedic product forms are available at Thilaka Ayurveda?",
     answer:
       "According to our product scope, we organize offerings across traditional forms including Churna (herbal powders), Vati / Gutika (herbal tablets or pills), Medicated Oils (herbal infused oils), Arishta / Asava (fermented herbal liquid preparations), and fresh or dried Raw Herbs, subject to shop availability.",
+  },
+  {
+    id: "forms-difference",
+    question: "What is the difference between Churna, Vati / Gutika, Medicated Oils, and Arishta / Asava?",
+    answer:
+      "Churna refers to finely ground dried herbal powders; Vati / Gutika are measured herbal tablets or pills; Medicated Oils (Taila) are botanical oil infusions intended for specified topical or traditional applications; and Arishta / Asava are traditional fermented herbal liquid preparations.",
+  },
+  {
+    id: "custom-preparations",
+    question: "Does Thilaka Ayurveda offer personalized or custom herbal preparations?",
+    answer:
+      "Thilaka Ayurveda's existing service descriptions note personalized herbal preparations. Please contact our Ruwanwella shop directly at +94 36 226 6693 to confirm which formulations can currently be prepared and what consultation or authorization requirements apply.",
+  },
+  {
+    id: "raw-herbs",
+    question: "Does Thilaka Ayurveda supply fresh and dried raw herbs?",
+    answer:
+      "Yes, fresh and dried raw herbal ingredients are part of our shop's offering, subject to seasonal harvesting and counter stock. Please call +94 36 226 6693 before visiting to check whether specific botanicals or quantities are currently available.",
+  },
+  {
+    id: "verify-ingredients",
+    question: "How can I verify ingredients, pack sizes, and usage directions before purchasing?",
+    answer:
+      "Because individual formulations, pack sizes, and directions vary by manufacturer and preparation, we encourage customers to review verified product labels directly at our Ruwanwella shop counter or call +94 36 226 6693 to ask about a specific product.",
   },
   {
     id: "medical-advice",
@@ -546,4 +591,20 @@ export const FAQS: FaqItem[] = [
 
 export function getCategoryBySlug(slug: string): ProductCategory | undefined {
   return PRODUCT_CATEGORIES.find((cat) => cat.slug === slug);
+}
+
+export function getCategoryFaqs(category: ProductCategory): FaqItem[] {
+  const formsList = category.recommendedForms.join(", ");
+  return [
+    {
+      id: `${category.slug}-availability`,
+      question: `How can I check availability of ${category.name} products at Thilaka Ayurveda?`,
+      answer: `Call ${BUSINESS_INFO.phoneDisplay} or prepare an availability enquiry on our Contact page before visiting ${BUSINESS_INFO.address}. Our staff can confirm currently available ${formsList} preparations, pack sizes, and verified label ingredients in store.`,
+    },
+    {
+      id: `${category.slug}-purchase`,
+      question: `Can I buy ${category.name} products online from Thilaka Ayurveda?`,
+      answer: `No. This website is a digital product catalogue only and does not support online ordering, payments, product reservations, or delivery. All ${category.name} products must be purchased in person at our shop in Ruwanwella.`,
+    },
+  ];
 }

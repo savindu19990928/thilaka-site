@@ -1,13 +1,15 @@
 import type { MetadataRoute } from "next";
-import { PRODUCT_CATEGORIES } from "@/lib/site-data";
+import {
+  PRODUCT_CATEGORIES,
+  SITE_LAST_UPDATED_ISO,
+  SITE_URL,
+} from "@/lib/site-data";
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://www.thilakaayurveda.lk";
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
-    "",
+    "/",
     "/products/",
     "/about/",
     "/services/",
@@ -20,8 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   return [...staticPages, ...categoryPages].map((path) => ({
-    url: `${BASE_URL}${path}`,
+    url: `${SITE_URL}${path}`,
+    lastModified: SITE_LAST_UPDATED_ISO,
     changeFrequency: "monthly",
-    priority: path === "" ? 1.0 : path === "/products/" ? 0.9 : 0.8,
+    priority: path === "/" ? 1.0 : path === "/products/" ? 0.9 : 0.8,
   }));
 }

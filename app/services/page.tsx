@@ -1,21 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MessageSquareText, Phone } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
 import {
   CatalogueNoticeBanner,
   HealthDisclaimerBanner,
 } from "@/components/Notices";
+import { buildOpenGraph, buildServicesPageGraph } from "@/lib/schema";
 import { BUSINESS_INFO, SERVICES } from "@/lib/site-data";
 
+const SERVICES_DESC =
+  "Explore in-shop Ayurvedic retail, availability enquiries, personalized herbal preparations, and seasonal raw herbs at Thilaka Ayurveda, Ruwanwella.";
+
 export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Explore the in-shop Ayurvedic services described by Thilaka Ayurveda in Ruwanwella — traditional products, personal enquiries, raw herbs, and shop guidance.",
+  title: "Ayurvedic Shop Services in Ruwanwella",
+  description: SERVICES_DESC,
+  alternates: {
+    canonical: "/services/",
+  },
+  openGraph: buildOpenGraph(
+    "Ayurvedic Shop Services in Ruwanwella | Thilaka Ayurveda",
+    SERVICES_DESC,
+    "/services/"
+  ),
+  twitter: {
+    card: "summary_large_image",
+    title: "Ayurvedic Shop Services in Ruwanwella | Thilaka Ayurveda",
+    description:
+      "Traditional Ayurvedic products, counter guidance, and seasonal raw botanicals at No. 38, Main Street, Ruwanwella.",
+    images: ["/images/og-cover.png"],
+  },
 };
 
 export default function ServicesPage() {
   return (
     <div className="bg-[#FAF7F0] py-12 sm:py-16">
+      <JsonLd data={buildServicesPageGraph()} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
         <header className="max-w-3xl space-y-4">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#845D18]">

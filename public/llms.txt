@@ -1,0 +1,43 @@
+# Thilaka Ayurveda
+
+> Traditional Ayurvedic medicine shop and herbal-product retailer at No. 38, Main Street, Ruwanwella, Sri Lanka. Established in 1982 according to Thilaka Ayurveda's official website. Telephone: +94 36 226 6693. This website is a digital product catalogue and information resource only — online purchases, carts, payments, product reservations, and delivery are not available. Customers must visit the physical shop in Ruwanwella to buy products.
+
+Last reviewed: 2026-11-23
+
+## Core Pages
+
+- [Home](https://www.thilakaayurveda.lk/): Overview of Thilaka Ayurveda, featured product categories, traditional preparation forms, core values, and Ruwanwella shop location.
+- [Product Catalogue](https://www.thilakaayurveda.lk/products/): Searchable digital catalogue covering 12 Ayurvedic wellness categories and 5 traditional preparation forms (catalogue only; purchase in shop).
+- [About Us](https://www.thilakaayurveda.lk/about/): Family-operated heritage since 1982, mission, and core values (*Tradition*, *Care*, *Quality*, *Transparency*, *Responsibility*).
+- [Services](https://www.thilakaayurveda.lk/services/): In-shop product retail, availability enquiries, personalized herbal preparations (subject to in-shop confirmation), and seasonal raw herbs.
+- [Quality, Sourcing & FAQs](https://www.thilakaayurveda.lk/quality/): Transparent ingredient and label verification policy, medical disclaimer, and 10 Frequently Asked Questions.
+- [Contact & Visit Shop](https://www.thilakaayurveda.lk/contact/): Shop address (No. 38, Main Street, Ruwanwella), telephone (+94 36 226 6693), opening-hours confirmation guidance, Google Maps directions, and enquiry builder.
+
+## Product Catalogue Categories (12 Categories)
+
+- [Digestive Health](https://www.thilakaayurveda.lk/products/digestive-health/): Products presented for digestive and gut wellness.
+- [Respiratory Care](https://www.thilakaayurveda.lk/products/respiratory-care/): Products presented for respiratory wellness and immunity.
+- [Joint & Muscle Care](https://www.thilakaayurveda.lk/products/joint-and-muscle-care/): Products presented for joint and muscle wellness.
+- [Women's Health](https://www.thilakaayurveda.lk/products/womens-health/): Products presented for women's wellness.
+- [Skin & Hair Care](https://www.thilakaayurveda.lk/products/skin-and-hair-care/): Products presented for skin and hair care.
+- [Immune Support](https://www.thilakaayurveda.lk/products/immune-support/): Herbal products presented for general immune support.
+- [Detox & Cleansing](https://www.thilakaayurveda.lk/products/detox-and-cleansing/): Products presented for cleansing and detox-related wellness.
+- [Diabetes & Metabolic Health](https://www.thilakaayurveda.lk/products/diabetes-and-metabolic-health/): Products presented in relation to blood sugar and metabolic health.
+- [Weight Management](https://www.thilakaayurveda.lk/products/weight-management/): Products presented for weight-management purposes.
+- [Oral & Dental Care](https://www.thilakaayurveda.lk/products/oral-and-dental-care/): Products presented for oral and dental care.
+- [Bone & Spine Health](https://www.thilakaayurveda.lk/products/bone-and-spine-health/): Products presented for bone and spinal wellness.
+- [Elderly Care](https://www.thilakaayurveda.lk/products/elderly-care/): Products presented for age-related wellness and vitality.
+
+## Machine-Readable Resources
+
+- [Full Knowledge Reference (llms-full.txt)](https://www.thilakaayurveda.lk/llms-full.txt): Single-file complete text reference of verified business facts, all 12 categories, 5 preparation forms, services, and 10 FAQs.
+- [Structured Catalogue Mirror (catalogue.md)](https://www.thilakaayurveda.lk/catalogue.md): Markdown tables of all product categories and traditional preparation forms.
+- [Open Knowledge Format Index (/okf/index.md)](https://www.thilakaayurveda.lk/okf/index.md): Cross-linked Markdown concept bundle following OKF v0.1.
+- [AI Catalog Manifest (/.well-known/ai-catalog.json)](https://www.thilakaayurveda.lk/.well-known/ai-catalog.json): JSON directory of machine-readable discovery endpoints.
+- [XML Sitemap](https://www.thilakaayurveda.lk/sitemap.xml): Canonical list of all public pages.
+
+## Scope & Accuracy Notes
+
+- **Purchase Model:** Catalogue only. No e-commerce, online ordering, payment gateway, reservations, or shipping. Customers visit No. 38, Main Street, Ruwanwella, Sri Lanka to purchase.
+- **Opening Hours:** Customers should call +94 36 226 6693 before travelling to confirm current daily opening hours and Sri Lankan public/Poya holiday arrangements.
+- **Health Disclaimer:** General product and business information is not a substitute for diagnosis, treatment, or advice from a qualified healthcare professional.

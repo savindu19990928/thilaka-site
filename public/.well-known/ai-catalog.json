@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "publisher": {
+    "name": "Thilaka Ayurveda",
+    "url": "https://www.thilakaayurveda.lk/",
+    "address": "No. 38, Main Street, Ruwanwella, Sri Lanka",
+    "telephone": "+94 36 226 6693",
+    "established": "1982",
+    "purchase_model": "catalogue-only-in-shop-purchase"
+  },
+  "last_updated": "2026-11-23",
+  "resources": [
+    {
+      "id": "llms-txt",
+      "title": "Thilaka Ayurveda LLMs Summary",
+      "type": "text/markdown",
+      "url": "https://www.thilakaayurveda.lk/llms.txt",
+      "description": "Concise overview of business facts, all canonical URLs, and scope notes."
+    },
+    {
+      "id": "llms-full-txt",
+      "title": "Thilaka Ayurveda Full Knowledge Reference",
+      "type": "text/markdown",
+      "url": "https://www.thilakaayurveda.lk/llms-full.txt",
+      "description": "Complete verified reference covering shop profile, 12 categories, 5 forms, services, and 10 FAQs."
+    },
+    {
+      "id": "catalogue-md",
+      "title": "Ayurvedic Product Catalogue (Markdown)",
+      "type": "text/markdown",
+      "url": "https://www.thilakaayurveda.lk/catalogue.md",
+      "description": "Structured Markdown table of all 12 product categories and 5 traditional dosage forms."
+    },
+    {
+      "id": "okf-bundle",
+      "title": "Open Knowledge Format (OKF) Bundle",
+      "type": "text/markdown",
+      "url": "https://www.thilakaayurveda.lk/okf/index.md",
+      "description": "Cross-linked concept graph for Thilaka Ayurveda following OKF v0.1."
+    },
+    {
+      "id": "sitemap",
+      "title": "XML Sitemap",
+      "type": "application/xml",
+      "url": "https://www.thilakaayurveda.lk/sitemap.xml",
+      "description": "Complete canonical sitemap of all public HTML pages."
+    }
+  ]
+}

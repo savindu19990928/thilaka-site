@@ -2,19 +2,39 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
-import { OrnamentDivider } from "@/components/OrnamentDivider";
+import { JsonLd } from "@/components/JsonLd";
 import { CatalogueNoticeBanner } from "@/components/Notices";
+import { OrnamentDivider } from "@/components/OrnamentDivider";
+import { buildAboutPageGraph, buildOpenGraph } from "@/lib/schema";
 import { BUSINESS_INFO, CORE_VALUES } from "@/lib/site-data";
 
+const ABOUT_DESC =
+  "Learn about Thilaka Ayurveda in Ruwanwella, Sri Lanka—a family-operated Ayurvedic shop established in 1982 according to its official website.";
+
 export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about Thilaka Ayurveda in Ruwanwella, Sri Lanka — a family-operated Ayurvedic medicine business established in 1982 according to its official website.",
+  title: "About Thilaka Ayurveda (Est. 1982)",
+  description: ABOUT_DESC,
+  alternates: {
+    canonical: "/about/",
+  },
+  openGraph: buildOpenGraph(
+    "About Thilaka Ayurveda (Est. 1982) | Thilaka Ayurveda",
+    ABOUT_DESC,
+    "/about/"
+  ),
+  twitter: {
+    card: "summary_large_image",
+    title: "About Thilaka Ayurveda (Est. 1982) | Thilaka Ayurveda",
+    description:
+      "Family-operated traditional Ayurvedic medicine shop in Ruwanwella, Sri Lanka (Est. 1982).",
+    images: ["/images/og-cover.png"],
+  },
 };
 
 export default function AboutPage() {
   return (
     <div className="bg-[#FAF7F0] py-12 sm:py-16">
+      <JsonLd data={buildAboutPageGraph()} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Editorial Intro */}
         <section className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
@@ -73,6 +93,74 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Verified Business Facts Summary (Entity Clarity for Search & AI) */}
+        <section
+          aria-labelledby="business-profile-heading"
+          className="rounded-3xl border border-[#E3DAC6] bg-white p-6 shadow-xs sm:p-8"
+        >
+          <h2
+            id="business-profile-heading"
+            className="font-serif text-2xl font-semibold text-[#15231A] sm:text-3xl mb-5"
+          >
+            Verified Business Profile
+          </h2>
+          <dl className="grid gap-5 text-sm sm:grid-cols-2 lg:grid-cols-3">
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F7065]">
+                Business Name
+              </dt>
+              <dd className="mt-1 font-medium text-[#15231A]">
+                {BUSINESS_INFO.name}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F7065]">
+                Business Type
+              </dt>
+              <dd className="mt-1 font-medium text-[#15231A]">
+                Traditional Ayurvedic medicine shop &amp; herbal retailer
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F7065]">
+                Stated Establishment Year
+              </dt>
+              <dd className="mt-1 font-medium text-[#0E4025]">
+                {BUSINESS_INFO.establishedYear} (per official website)
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F7065]">
+                Physical Address
+              </dt>
+              <dd className="mt-1 font-medium text-[#15231A]">
+                {BUSINESS_INFO.address}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F7065]">
+                Telephone
+              </dt>
+              <dd className="mt-1 font-medium">
+                <a
+                  href={BUSINESS_INFO.phoneHref}
+                  className="text-[#0E4025] hover:underline"
+                >
+                  {BUSINESS_INFO.phoneDisplay}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5F7065]">
+                Purchase Model
+              </dt>
+              <dd className="mt-1 font-medium text-[#845D18]">
+                Digital catalogue only · Purchases made at shop
+              </dd>
+            </div>
+          </dl>
         </section>
 
         <OrnamentDivider />

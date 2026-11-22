@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,6 +13,7 @@ import {
   Store,
 } from "lucide-react";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { JsonLd } from "@/components/JsonLd";
 import {
   CatalogueNoticeBanner,
   HealthDisclaimerBanner,
@@ -19,6 +21,7 @@ import {
 import { OrnamentDivider } from "@/components/OrnamentDivider";
 import { PreparationFormsShowcase } from "@/components/PreparationFormsShowcase";
 import { Reveal } from "@/components/Reveal";
+import { buildHomePageGraph, buildOpenGraph } from "@/lib/schema";
 import {
   BUSINESS_INFO,
   CORE_VALUES,
@@ -26,11 +29,35 @@ import {
   SERVICES,
 } from "@/lib/site-data";
 
+const HOME_TITLE =
+  "Thilaka Ayurveda | Ayurvedic Products in Ruwanwella, Sri Lanka";
+const HOME_DESC =
+  "Discover Thilaka Ayurveda in Ruwanwella, Sri Lanka. Browse 12 Ayurvedic product categories and 5 herbal forms, and visit No. 38, Main Street.";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: HOME_TITLE,
+  },
+  description: HOME_DESC,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: buildOpenGraph(HOME_TITLE, HOME_DESC, "/"),
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_TITLE,
+    description:
+      "Browse 12 Ayurvedic product categories and 5 herbal forms, and visit Thilaka Ayurveda at No. 38, Main Street, Ruwanwella.",
+    images: ["/images/og-cover.png"],
+  },
+};
+
 export default function HomePage() {
   const featuredCategories = PRODUCT_CATEGORIES.filter((cat) => cat.featured);
 
   return (
     <>
+      <JsonLd data={buildHomePageGraph()} />
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden border-b border-[#E3DAC6] bg-[#FAF7F0] paper-grain botanical-glow">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">

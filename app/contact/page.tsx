@@ -2,16 +2,35 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Clock, ExternalLink, MapPin, Phone } from "lucide-react";
 import { ContactEnquiryForm } from "@/components/ContactEnquiryForm";
+import { JsonLd } from "@/components/JsonLd";
 import {
   CatalogueNoticeBanner,
   HealthDisclaimerBanner,
 } from "@/components/Notices";
+import { buildContactPageGraph, buildOpenGraph } from "@/lib/schema";
 import { BUSINESS_INFO } from "@/lib/site-data";
 
+const CONTACT_DESC =
+  "Visit Thilaka Ayurveda at No. 38, Main Street, Ruwanwella, Sri Lanka or call +94 36 226 6693 before travelling to confirm hours and availability.";
+
 export const metadata: Metadata = {
-  title: "Contact & Visit Us",
-  description:
-    "Visit Thilaka Ayurveda at No. 38, Main Street, Ruwanwella, Sri Lanka or call +94 36 226 6693 to ask about product information and current availability.",
+  title: "Visit & Contact Thilaka Ayurveda",
+  description: CONTACT_DESC,
+  alternates: {
+    canonical: "/contact/",
+  },
+  openGraph: buildOpenGraph(
+    "Visit & Contact Thilaka Ayurveda | Thilaka Ayurveda",
+    CONTACT_DESC,
+    "/contact/"
+  ),
+  twitter: {
+    card: "summary_large_image",
+    title: "Visit & Contact Thilaka Ayurveda | Thilaka Ayurveda",
+    description:
+      "Shop address, directions, phone (+94 36 226 6693), and enquiry helper for Thilaka Ayurveda in Ruwanwella.",
+    images: ["/images/og-cover.png"],
+  },
 };
 
 function FormFallback() {
@@ -29,6 +48,7 @@ function FormFallback() {
 export default function ContactPage() {
   return (
     <div className="bg-[#FAF7F0] py-12 sm:py-16">
+      <JsonLd data={buildContactPageGraph()} />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10">
         <header className="max-w-3xl space-y-4">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#845D18]">

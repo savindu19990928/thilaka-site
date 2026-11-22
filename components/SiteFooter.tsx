@@ -5,6 +5,7 @@ import {
   BUSINESS_INFO,
   NAV_LINKS,
   PRODUCT_CATEGORIES,
+  SITE_LAST_UPDATED_LABEL,
 } from "@/lib/site-data";
 
 export function SiteFooter() {
@@ -141,12 +142,12 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Copyright Row */}
-        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-[#CFE0D4]/80 sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-[#CFE0D4]/85 sm:flex-row sm:items-center">
           <p>
             © {BUSINESS_INFO.name} · {BUSINESS_INFO.address}
           </p>
-          <p>
-            Made by:{" "}
+          <p className="text-[11px] text-[#CFE0D4]/80">
+            Information last reviewed: {SITE_LAST_UPDATED_LABEL} · Made by:{" "}
             <a
               href="https://devrious.lk"
               target="_blank"

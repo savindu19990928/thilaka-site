@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Home, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { BUSINESS_INFO } from "@/lib/site-data";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFoundPage() {
   return (
