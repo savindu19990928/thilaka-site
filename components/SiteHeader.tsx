@@ -29,7 +29,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full">
       {/* Top Utility Strip */}
-      <div className="bg-[#072415] text-[#EDE6D6] border-b border-[#D4AF63]/20">
+      {/* <div className="bg-[#072415] text-[#EDE6D6] border-b border-[#D4AF63]/20">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-1.5 px-4 py-2 text-xs sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="inline-flex items-center gap-1.5 text-[#FAF7F0]">
@@ -58,7 +58,7 @@ export function SiteHeader() {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Main Sticky Navigation */}
       <div className="bg-[#FAF7F0]/95 backdrop-blur-md border-b border-[#E3DAC6] shadow-2xs">
